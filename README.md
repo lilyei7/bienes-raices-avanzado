@@ -7,6 +7,24 @@ Contenido relevante:
 - `site/` - archivos estáticos del sitio (index.html, styles.css, script.js).
 - `.github/workflows/deploy-pages.yml` - workflow de GitHub Actions que publica `site/` en Pages cuando haces push a `main`.
 
+Nuevas mejoras (sitio avanzado):
+
+- Seed data con múltiples propiedades (casas y departamentos).
+- Búsqueda por texto (barrio, ciudad, descripción).
+- Filtros por tipo, precio máximo y número de habitaciones.
+- Ordenamiento (destacados, precio asc/desc) y paginación.
+- Vista detalle rápida (overlay/modal) al pulsar "Ver".
+
+Prueba local rápida:
+
+```bash
+cd site
+python3 -m http.server 8000
+# Abrir http://localhost:8000
+```
+
+Haz cambios en `site/script.js` para ajustar las propiedades o `site/styles.css` para cambiar el diseño; cada push a `main` desencadenará el workflow y actualizará GitHub Pages.
+
 Cómo usar localmente:
 
 1. Abre `site/index.html` en tu navegador o usa un servidor estático (por ejemplo `live-server` o `python -m http.server`).

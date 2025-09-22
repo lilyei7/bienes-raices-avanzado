@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Portafolio - Bienes Raíces</title>
+    <title>InmoPort — Bienes Raíces</title>
+    <meta name="description" content="InmoPort - portafolio de propiedades: casas y departamentos. Sitio de ejemplo con búsqueda, filtros y páginas detalle." />
+    <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -20,38 +22,60 @@
 
     <main>
       <section class="hero">
-        <div class="container">
-          <h2>Encuentra la casa de tus sueños</h2>
-          <p>Portafolio de proyectos y listados. Diseño moderno, búsquedas rápidas y contacto directo.</p>
+        <div class="container hero-inner">
+          <div>
+            <h2>Encuentra la casa de tus sueños</h2>
+            <p>Portafolio de proyectos y listados. Diseño moderno, búsquedas rápidas y contacto directo.</p>
+          </div>
+          <div class="search-wrap">
+            <input id="search-input" placeholder="Buscá por barrio, ciudad o características..."/>
+            <select id="sort-select" title="Ordenar">
+              <option value="featured">Destacados</option>
+              <option value="price-asc">Precio: menor a mayor</option>
+              <option value="price-desc">Precio: mayor a menor</option>
+            </select>
+          </div>
         </div>
       </section>
 
       <section id="properties" class="container properties">
-        <h3>Propiedades destacadas</h3>
-
-        <div class="filters">
-          <label>
-            Filtrar por tipo:
-            <select id="filter-type">
-              <option value="all">Todas</option>
-              <option value="house">Casa</option>
-              <option value="apartment">Departamento</option>
-            </select>
-          </label>
-          <label>
-            Max precio:
-            <select id="filter-price">
-              <option value="any">Cualquiera</option>
-              <option value="200000">$200,000</option>
-              <option value="400000">$400,000</option>
-              <option value="800000">$800,000</option>
-            </select>
-          </label>
+        <div class="toolbar">
+          <div class="filters">
+            <label>
+              Tipo:
+              <select id="filter-type">
+                <option value="all">Todas</option>
+                <option value="house">Casa</option>
+                <option value="apartment">Departamento</option>
+              </select>
+            </label>
+            <label>
+              Max precio:
+              <select id="filter-price">
+                <option value="any">Cualquiera</option>
+                <option value="200000">$200,000</option>
+                <option value="400000">$400,000</option>
+                <option value="800000">$800,000</option>
+              </select>
+            </label>
+            <label>
+              Habitaciones:
+              <select id="filter-bedrooms">
+                <option value="any">Cualquiera</option>
+                <option value="1">1+</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+              </select>
+            </label>
+          </div>
+          <div class="result-count"><span id="result-count">0</span> propiedades</div>
         </div>
 
         <div id="listings" class="grid">
           <!-- Property cards inserted by script -->
         </div>
+
+        <div class="pagination" id="pagination"></div>
       </section>
 
       <section id="about" class="container about">
