@@ -47,6 +47,19 @@ function pickImage(seed){
   const idx = seed % IMAGE_POOL.length
   return IMG_PATH + IMAGE_POOL[idx]
 }
+
+// assign local images to all listings (shuffle pool first for randomness)
+;(function assignLocalImages(){
+  // simple Fisher-Yates shuffle
+  for(let i=IMAGE_POOL.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1))
+    const t = IMAGE_POOL[i]; IMAGE_POOL[i]=IMAGE_POOL[j]; IMAGE_POOL[j]=t
+  }
+  // map first N images to listings (wrap if fewer images)
+  for(let i=0;i<listings.length;i++){
+    listings[i].img = IMG_PATH + IMAGE_POOL[i % IMAGE_POOL.length]
+  }
+})();
 let state = {
   query: '',
   type: 'all',
