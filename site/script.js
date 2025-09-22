@@ -24,6 +24,29 @@ const listings = [
 ]
 
 const PAGE_SIZE = 6
+// read config (APP injected by config.js)
+const WSP = (window.APP && window.APP.WSP) ? window.APP.WSP : '5491123456789'
+const IMG_PATH = (window.APP && window.APP.IMG_PATH) ? window.APP.IMG_PATH : 'imagenes/'
+
+// local image pool (file names exist in /site/imagenes)
+const IMAGE_POOL = [
+  '174d1417ce018efb99ee1f4fb4e1a8b1.jpg','24b942832926db41e91b9c303db3c43f.jpg','2999188c2dbd1cc90bbf2dc3ad3e3e92.jpg',
+  '4b78c584374d3d8a9a8266f48b3e285e.jpg','4e897ac48b41e1d9a3cb7adb5238346f.jpg','51d42015f4542675fcd6265e313ce9c1.jpg',
+  '66652d9fd21971b635e847c1d0dbe6dd.jpg','6a7b24f3ea3e5f1fb38bf02542629c82.jpg','8bb3b99351f1356c6c6ce306db3cbdcd.jpg',
+  '8cdc53881a30c9cacdb455dd4ef8647c.jpg','8e05af9818391ba5c503abc7b00579b1.jpg','a121f3d28b9d2416c3c2cb752ba44066.jpg',
+  'c02994ebe7ce6d4c7aa402aa5723ecfe.jpg','e74eccf57147d006423ed848ce59e7ec.jpg','Fitzroy-by-Christine-Rose-Design-and-Studio-Liu-The-Local-Project-Image-1-768x1024.jpg',
+  'Gemini_Generated_Image_1kwvun1kwvun1kwv.png','Gemini_Generated_Image_4gjmta4gjmta4gjm.png','Gemini_Generated_Image_9m856f9m856f9m85.png',
+  'Gemini_Generated_Image_amikegamikegamik.png','Gemini_Generated_Image_bcd6ybcd6ybcd6yb.png','Gemini_Generated_Image_cejx43cejx43cejx.png',
+  'Gemini_Generated_Image_jsf63mjsf63mjsf6.png','Gemini_Generated_Image_q2aewbq2aewbq2ae.png','Gemini_Generated_Image_quaqc8quaqc8quaq.png',
+  'Gemini_Generated_Image_zazarhzazarhzaza.png','Gemini_Generated_Image_zdpb5tzdpb5tzdpb.png','Gemini_Generated_Image_zfhrjxzfhrjxzfhr.png',
+  'Snake-River-Cabin-by-McLean-Quinlan-The-Local-Project-Image-1-2048x1303.jpg'
+]
+
+function pickImage(seed){
+  // deterministic-ish pick by id to avoid shuffle each render
+  const idx = seed % IMAGE_POOL.length
+  return IMG_PATH + IMAGE_POOL[idx]
+}
 let state = {
   query: '',
   type: 'all',
@@ -90,8 +113,9 @@ function render(items){
   items.forEach(p => {
     const div = document.createElement('article')
     div.className = 'card'
+    const imgSrc = p.img && p.img.startsWith('http') ? p.img : pickImage(p.id)
     div.innerHTML = `
-      <img src="${p.img}" alt="${p.title}" />
+      <img src="${imgSrc}" alt="${p.title}" loading="lazy" />
       <div style="padding:8px">
         <div style="display:flex;justify-content:space-between;align-items:center">
           <h4>${p.title}</h4>
@@ -101,7 +125,7 @@ function render(items){
         <p style="margin:8px 0;color:var(--muted)">${p.bedrooms} hab · ${p.type} · <strong style="text-transform:capitalize">${p.status}</strong></p>
         <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
           <button data-id="${p.id}" class="btn-view">Ver</button>
-          <a class="btn-wsp" href="https://wa.me/5491123456789?text=${encodeURIComponent('Hola Jhaycor, estoy interesado en la propiedad ID '+p.id+' - '+p.title)}" target="_blank">WhatsApp</a>
+          <a class="btn-wsp" href="https://wa.me/${WSP}?text=${encodeURIComponent('Hola Jhaycor, estoy interesado en la propiedad ID '+p.id+' - '+p.title)}" target="_blank">WhatsApp</a>
         </div>
       </div>
     `
@@ -151,17 +175,17 @@ function openDetail(id){
     overlay.style.zIndex='9999'
     document.body.appendChild(overlay)
   }
-  overlay.innerHTML = `
+    overlay.innerHTML = `
     <div style="max-width:900px;background:#fff;border-radius:12px;overflow:hidden">
       <div style="display:flex;gap:20px;flex-wrap:wrap">
-        <img src="${p.img}" style="width:420px;height:320px;object-fit:cover" />
+        <img src="${p.img && p.img.startsWith('http')?p.img:pickImage(p.id)}" style="width:420px;height:320px;object-fit:cover" loading="lazy" />
         <div style="padding:18px;flex:1;min-width:260px">
           <h3>${p.title}</h3>
           <p style="color:var(--muted)">${p.city} — ${p.neighborhood} · ${p.bedrooms} hab</p>
           <p style="margin-top:12px">${p.desc}</p>
           <p style="margin-top:12px;font-weight:700;color:var(--accent)">$${p.price.toLocaleString()}</p>
           <div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end">
-            <a id="contact-wsp" class="btn" href="https://wa.me/5491123456789?text=${encodeURIComponent('Estoy interesado en la propiedad ID '+p.id+' - '+p.title)}" target="_blank">Contactar por WhatsApp</a>
+            <a id="contact-wsp" class="btn" href="https://wa.me/${WSP}?text=${encodeURIComponent('Estoy interesado en la propiedad ID '+p.id+' - '+p.title)}" target="_blank">Contactar por WhatsApp</a>
             <button id="close-detail">Cerrar</button>
           </div>
         </div>
@@ -189,7 +213,7 @@ document.getElementById('contact-form').addEventListener('submit', e=>{
   const email = fd.get('email') || ''
   const message = fd.get('message') || ''
   const text = `Hola Jhaycor, soy ${name}. Mi correo es ${email}. ${message}`
-  const url = `https://wa.me/5491123456789?text=${encodeURIComponent(text)}`
+  const url = `https://wa.me/${WSP}?text=${encodeURIComponent(text)}`
   window.open(url, '_blank')
   e.target.reset()
 })
