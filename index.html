@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portafolio - Bienes Raíces</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="brand">InmoPort</h1>
+        <nav>
+          <a href="#properties">Propiedades</a>
+          <a href="#about">Sobre mí</a>
+          <a href="#contact">Contacto</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h2>Encuentra la casa de tus sueños</h2>
+          <p>Portafolio de proyectos y listados. Diseño moderno, búsquedas rápidas y contacto directo.</p>
+        </div>
+      </section>
+
+      <section id="properties" class="container properties">
+        <h3>Propiedades destacadas</h3>
+
+        <div class="filters">
+          <label>
+            Filtrar por tipo:
+            <select id="filter-type">
+              <option value="all">Todas</option>
+              <option value="house">Casa</option>
+              <option value="apartment">Departamento</option>
+            </select>
+          </label>
+          <label>
+            Max precio:
+            <select id="filter-price">
+              <option value="any">Cualquiera</option>
+              <option value="200000">$200,000</option>
+              <option value="400000">$400,000</option>
+              <option value="800000">$800,000</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="listings" class="grid">
+          <!-- Property cards inserted by script -->
+        </div>
+      </section>
+
+      <section id="about" class="container about">
+        <h3>Sobre mí</h3>
+        <p>Soy desarrollador web especializado en sitios para inmobiliarias y freelancing. Entrego sitios rápidos, responsivos y fáciles de mantener.</p>
+      </section>
+
+      <section id="contact" class="container contact">
+        <h3>Contacto</h3>
+        <form id="contact-form">
+          <label>Nombre
+            <input type="text" name="name" required />
+          </label>
+          <label>Correo
+            <input type="email" name="email" required />
+          </label>
+          <label>Mensaje
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+          <button type="submit">Enviar</button>
+          <p class="hint">(Este formulario es de ejemplo. Conecta un servicio de formularios o tu backend para recibir mensajes.)</p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> InmoPort — Portafolio</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
