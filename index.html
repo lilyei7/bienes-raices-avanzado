@@ -90,25 +90,36 @@
         <div class="pagination" id="pagination"></div>
       </section>
 
-      <section id="about" class="container about">
-        <h3>Sobre Nosotros</h3>
-        <p>NEXUS es un agente inmobiliario moderno y tecnológico. Utilizamos IA para análisis de mercado y realidad virtual para tours inmersivos que aceleran la venta y mejoran la experiencia del comprador.</p>
+      <section id="about" class="container about fade-in-section">
+        <div class="section-head text-center">
+          <h3>Sobre Nosotros</h3>
+          <p class="lead">NEXUS es un agente inmobiliario moderno y tecnológico. Utilizamos IA para análisis de mercado y realidad virtual para tours inmersivos que aceleran la venta y mejoran la experiencia del comprador.</p>
+        </div>
       </section>
-      <section id="services" class="container services">
-        <h3>Servicios</h3>
+      <section id="services" class="container services fade-in-section">
+        <div class="section-head text-center">
+          <h3>Nuestros Servicios</h3>
+          <p class="muted">Tecnología de vanguardia para una experiencia inmobiliaria superior.</p>
+        </div>
         <div class="services-grid">
-          <article class="service">
-            <div class="icon">🏠</div>
+          <article class="service animate-card">
+            <div class="icon-wrapper">
+              <div class="icon">🏠</div>
+            </div>
             <h4>Tours Virtuales 3D</h4>
             <p>Visitas remotas inmersivas que permiten explorar propiedades como si estuvieras ahí.</p>
           </article>
-          <article class="service">
-            <div class="icon">🤖</div>
+          <article class="service animate-card">
+            <div class="icon-wrapper">
+              <div class="icon">🤖</div>
+            </div>
             <h4>Análisis de Mercado AI</h4>
             <p>Modelos de precio y demanda para fijar precios competitivos y maximizar retorno.</p>
           </article>
-          <article class="service">
-            <div class="icon">🔒</div>
+          <article class="service animate-card">
+            <div class="icon-wrapper">
+              <div class="icon">🔒</div>
+            </div>
             <h4>Transacciones Seguras</h4>
             <p>Procesos transparentes y documentación digital para cerrar operaciones con confianza.</p>
           </article>
@@ -117,20 +128,36 @@
 
 
       <section id="contact" class="container contact">
-        <h3>Contacto</h3>
-        <form id="contact-form">
-          <label>Nombre
-            <input type="text" name="name" required />
-          </label>
-          <label>Correo
-            <input type="email" name="email" required />
-          </label>
-          <label>Mensaje
-            <textarea name="message" rows="4" required></textarea>
-          </label>
-          <button type="submit">Enviar</button>
-          <p class="hint">(Este formulario es de ejemplo. Conecta un servicio de formularios o tu backend para recibir mensajes.)</p>
-        </form>
+        <div class="section-head text-center">
+          <h3>Hablemos de tu próxima propiedad</h3>
+          <p class="muted">Contáctanos y descubre cómo podemos ayudarte a encontrar la propiedad perfecta.</p>
+        </div>
+        <div class="contact-wrapper">
+          <form id="contact-form" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nombre completo</label>
+                <input type="text" name="name" placeholder="Tu nombre" required />
+              </div>
+              <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="email" name="email" placeholder="tu@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>¿En qué podemos ayudarte?</label>
+              <textarea name="message" rows="5" placeholder="Cuéntanos qué tipo de propiedad buscas, presupuesto, ubicación preferida..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-large">
+              <span>Enviar mensaje</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <p class="hint">Te responderemos en menos de 24 horas</p>
+          </form>
+        </div>
       </section>
     </main>
 
