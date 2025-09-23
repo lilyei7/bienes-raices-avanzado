@@ -1,6 +1,10 @@
 [
-  {"id":1,"title":"Proteína Whey 1kg","price":2499,"img":"https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Proteína aislada de alta calidad."},
-  {"id":2,"title":"Creatina Monohidratada 300g","price":699,"img":"https://images.unsplash.com/photo-1606813902956-9921f41f4f0b?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Energía para tus entrenamientos."},
-  {"id":3,"title":"Pre-entreno Energético","price":899,"img":"https://images.unsplash.com/photo-1556228720-16f9a7d3a7b6?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Explosión de energía antes del gym."},
-  {"id":4,"title":"Multivitamínico Diario","price":599,"img":"https://images.unsplash.com/photo-1582719478190-1ba2b4766f12?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Apoya tu salud y recuperación."}
+  {"id":1,"title":"Proteína Whey 1kg","price":2499,"img":"https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Proteína aislada de alta calidad.","category":"Proteínas"},
+  {"id":2,"title":"Creatina Monohidratada 300g","price":699,"img":"https://images.unsplash.com/photo-1606813902956-9921f41f4f0b?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Energía para tus entrenamientos.","category":"Rendimiento"},
+  {"id":3,"title":"Pre-entreno Energético","price":899,"img":"https://images.unsplash.com/photo-1556228720-16f9a7d3a7b6?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Explosión de energía antes del gym.","category":"Rendimiento"},
+  {"id":4,"title":"Multivitamínico Diario","price":599,"img":"https://images.unsplash.com/photo-1582719478190-1ba2b4766f12?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Apoya tu salud y recuperación.","category":"Salud"},
+  {"id":5,"title":"Aminoácidos BCAA 200g","price":849,"img":"https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Recuperación muscular eficiente.","category":"Recuperación"},
+  {"id":6,"title":"Omega-3 60 cápsulas","price":1099,"img":"https://images.unsplash.com/photo-1584448980438-6fae21d4a6d6?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Apoya la salud cardiovascular.","category":"Salud"},
+  {"id":7,"title":"Glutamina 300g","price":749,"img":"https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Soporte para recuperación y sistema inmune.","category":"Recuperación"},
+  {"id":8,"title":"Pack Principiante (Whey+Creatina)","price":2999,"img":"https://images.unsplash.com/photo-1594759207861-30a3b6b3f6d6?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Ahorra con el pack para arrancar.","category":"Promociones"}
 ]

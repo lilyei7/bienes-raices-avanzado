@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Orden — Suplementos Store</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <a href="/suplementos-store">← Volver</a>
+    <h2>Orden creada</h2>
+    <div id="order-info"></div>
+  </div>
+  <script>
+    const order = JSON.parse(localStorage.getItem('suplementos_last_order')||'null')
+    const el = document.getElementById('order-info')
+    if(!order) el.innerHTML = '<p>No hay órdenes recientes.</p>'
+    else el.innerHTML = `<p>ID: ${order.id}</p><p>Total: $${order.total}</p><pre>${JSON.stringify(order.items,null,2)}</pre>`
+  </script>
+</body>
+</html>

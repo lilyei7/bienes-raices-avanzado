@@ -19,3 +19,14 @@ Archivos:
 
 Notas:
 - Este es un demo estático sin backend real. Para producción necesitarás integrar un pasarela de pagos y un backend para órdenes.
+
+Despliegue en GitHub Pages:
+
+1. El proyecto ya está en la rama `main`. Para servir la demo desde GitHub Pages en la ruta `/suplementos-store` basta con activar GitHub Pages en los ajustes del repo y elegir la rama `main` (o usar el workflow que ya tengas).
+
+Características incluidas en esta demo:
+- Catálogo con búsqueda, filtrado por categoría y ordenamiento
+- Páginas de producto individuales (`product.html?id=...`)
+- Modal de detalle en la página principal
+- Carrito persistente en `localStorage` y checkout simulado que crea una orden y la guarda en `localStorage`
+- Diseño responsive listo para Pages

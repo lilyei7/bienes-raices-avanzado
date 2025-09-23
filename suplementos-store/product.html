@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Producto — Suplementos Store</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <a href="/suplementos-store">← Volver a la tienda</a>
+    <div id="product-single"></div>
+  </div>
+  <script>
+    const params = new URLSearchParams(location.search)
+    const id = Number(params.get('id'))
+    fetch('products.json').then(r=>r.json()).then(products=>{
+      const p = products.find(x=>x.id===id)
+      if(!p){document.getElementById('product-single').innerHTML='<p>Producto no encontrado</p>';return}
+      document.getElementById('product-single').innerHTML = `
+        <div class="card">
+          <img src="${p.img}" alt="${p.title}">
+          <h2>${p.title}</h2>
+          <p>${p.desc}</p>
+          <div class="price">$${p.price.toLocaleString()}</div>
+          <div class="actions"><button onclick="addToCart(${p.id})" class="btn btn-primary">Agregar al carrito</button></div>
+        </div>
+      `
+    })
+    function addToCart(id){
+      const cart = JSON.parse(localStorage.getItem('suplementos_cart')||'[]')
+      const item = cart.find(x=>x.id===id)
+      if(item) item.qty++
+      else {fetch('products.json').then(r=>r.json()).then(products=>{const p=products.find(x=>x.id===id);cart.push({id:p.id,title:p.title,price:p.price,img:p.img,qty:1});localStorage.setItem('suplementos_cart',JSON.stringify(cart));alert('Agregado al carrito')})}
+    }
+  </script>
+</body>
+</html>
