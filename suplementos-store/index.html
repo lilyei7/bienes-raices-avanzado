@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Suplementos Store — Tienda</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand">Suplementos Store</h1>
+      <div class="actions">
+        <button id="cart-btn" class="btn">Carrito (<span id="cart-count">0</span>)</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Suplementos de calidad para apoyar tu entrenamiento</h2>
+      <p class="lead">Compra proteínas, multivitamínicos y pre-entrenos con envío rápido.</p>
+    </section>
+
+    <section id="products" class="products"></section>
+  </main>
+
+  <div id="cart-modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button id="close-cart" class="modal-close">Cerrar</button>
+      <h3>Tu carrito</h3>
+      <div id="cart-items"></div>
+      <div class="cart-footer">
+        <div>Total: $<span id="cart-total">0</span></div>
+        <button id="checkout" class="btn btn-primary">Pagar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="products.json" type="application/json" id="products-json"></script>
+  <script src="app.js"></script>
+</body>
+</html>

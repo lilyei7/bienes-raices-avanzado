@@ -1,0 +1,6 @@
+[
+  {"id":1,"title":"Proteína Whey 1kg","price":2499,"img":"https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Proteína aislada de alta calidad."},
+  {"id":2,"title":"Creatina Monohidratada 300g","price":699,"img":"https://images.unsplash.com/photo-1606813902956-9921f41f4f0b?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Energía para tus entrenamientos."},
+  {"id":3,"title":"Pre-entreno Energético","price":899,"img":"https://images.unsplash.com/photo-1556228720-16f9a7d3a7b6?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Explosión de energía antes del gym."},
+  {"id":4,"title":"Multivitamínico Diario","price":599,"img":"https://images.unsplash.com/photo-1582719478190-1ba2b4766f12?q=80&w=1200&auto=format&fit=crop&crop=entropy","desc":"Apoya tu salud y recuperación."}
+]
