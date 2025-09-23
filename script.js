@@ -215,8 +215,8 @@ function openDetail(id){
 filterType.addEventListener('change', e=>{ state.type=e.target.value; state.page=1; applyAll() })
 filterPrice.addEventListener('change', e=>{ state.maxPrice=e.target.value; state.page=1; applyAll() })
 filterBedrooms.addEventListener('change', e=>{ state.bedrooms=e.target.value; state.page=1; applyAll() })
-searchInput.addEventListener('input', e=>{ state.query=e.target.value; state.page=1; applyAll() })
-sortSelect.addEventListener('change', e=>{ state.sort=e.target.value; state.page=1; applyAll() })
+if(searchInput) searchInput.addEventListener('input', e=>{ state.query=e.target.value; state.page=1; applyAll() })
+if(sortSelect) sortSelect.addEventListener('change', e=>{ state.sort=e.target.value; state.page=1; applyAll() })
 
 document.getElementById('contact-form').addEventListener('submit', e=>{
   e.preventDefault()

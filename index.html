@@ -54,6 +54,10 @@
         <div class="toolbar">
           <div class="filters">
             <label>
+              Buscar:
+              <input type="text" id="search-input" placeholder="Buscar por título, ubicación..." />
+            </label>
+            <label>
               Tipo:
               <select id="filter-type">
                 <option value="all">Todas</option>
@@ -77,6 +81,15 @@
                 <option value="1">1+</option>
                 <option value="2">2+</option>
                 <option value="3">3+</option>
+              </select>
+            </label>
+            <label>
+              Ordenar por:
+              <select id="sort-select">
+                <option value="featured">Destacados</option>
+                <option value="price-low">Precio (menor a mayor)</option>
+                <option value="price-high">Precio (mayor a menor)</option>
+                <option value="bedrooms">Habitaciones</option>
               </select>
             </label>
           </div>
