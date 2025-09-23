@@ -132,8 +132,8 @@ function render(items){
         <div class="meta"><span class="type">${p.city} — ${p.neighborhood}</span><span class="price">$${p.price.toLocaleString()}</span></div>
         <p style="margin:8px 0;color:var(--muted)">${p.bedrooms} hab · ${p.type} · <strong style="text-transform:capitalize">${p.status}</strong></p>
         <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
-          <button data-id="${p.id}" class="btn-view">Ver</button>
-          <a class="btn-wsp" href="https://wa.me/${WSP}?text=${encodeURIComponent('Hola Jhaycor, estoy interesado en la propiedad ID '+p.id+' - '+p.title)}" target="_blank">WhatsApp</a>
+          <button data-id="${p.id}" class="btn btn-ghost btn-view" type="button">Ver</button>
+          <a class="btn btn-primary btn-wsp" href="https://wa.me/${WSP}?text=${encodeURIComponent('Hola Jhaycor, estoy interesado en la propiedad ID '+p.id+' - '+p.title)}" target="_blank">WhatsApp</a>
         </div>
       </div>
     `
