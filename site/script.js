@@ -235,3 +235,65 @@ document.getElementById('year').textContent = new Date().getFullYear()
 
 applyAll()
 
+// Animation system
+function initAnimations(){
+  // Hero animation on load
+  const hero = document.querySelector('.hero')
+  if(hero){
+    setTimeout(()=> hero.classList.add('loaded'), 100)
+  }
+  
+  // Grid staggered animation
+  const grid = document.querySelector('.grid')
+  if(grid){
+    setTimeout(()=> grid.classList.add('loaded'), 200)
+  }
+  
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible')
+      }
+    })
+  }, {threshold: 0.1})
+  
+  // Observe elements for scroll animations
+  document.querySelectorAll('.animate-card, .fade-in-section, .about').forEach(el=>{
+    observer.observe(el)
+  })
+}
+
+// Menu toggle functionality
+function initMenuToggle(){
+  const toggle = document.querySelector('.menu-toggle')
+  const nav = document.querySelector('.site-nav')
+  
+  if(toggle && nav){
+    toggle.addEventListener('click', ()=>{
+      const isVisible = nav.style.display === 'block'
+      nav.style.display = isVisible ? 'none' : 'block'
+    })
+  }
+}
+
+// Initialize animations and menu when page loads
+document.addEventListener('DOMContentLoaded', ()=>{
+  initAnimations()
+  initMenuToggle()
+})
+
+// Re-initialize grid animations when filtering changes
+const originalApplyAll = applyAll
+applyAll = function(){
+  originalApplyAll()
+  // Re-trigger grid animations after render
+  setTimeout(()=>{
+    const grid = document.querySelector('.grid')
+    if(grid){
+      grid.classList.remove('loaded')
+      setTimeout(()=> grid.classList.add('loaded'), 50)
+    }
+  }, 100)
+}
+
