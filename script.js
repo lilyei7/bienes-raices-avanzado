@@ -70,11 +70,6 @@ let state = {
 }
 
 const listEl = document.getElementById('listings')
-const filterType = document.getElementById('filter-type')
-const filterPrice = document.getElementById('filter-price')
-const filterBedrooms = document.getElementById('filter-bedrooms')
-const searchInput = document.getElementById('search-input')
-const sortSelect = document.getElementById('sort-select')
 const resultCount = document.getElementById('result-count')
 const paginationEl = document.getElementById('pagination')
 
@@ -211,25 +206,37 @@ function openDetail(id){
   })
 }
 
-// event listeners
-filterType.addEventListener('change', e=>{ state.type=e.target.value; state.page=1; applyAll() })
-filterPrice.addEventListener('change', e=>{ state.maxPrice=e.target.value; state.page=1; applyAll() })
-filterBedrooms.addEventListener('change', e=>{ state.bedrooms=e.target.value; state.page=1; applyAll() })
-if(searchInput) searchInput.addEventListener('input', e=>{ state.query=e.target.value; state.page=1; applyAll() })
-if(sortSelect) sortSelect.addEventListener('change', e=>{ state.sort=e.target.value; state.page=1; applyAll() })
-
-document.getElementById('contact-form').addEventListener('submit', e=>{
-  e.preventDefault()
-  // build a WhatsApp message from the form and open chat
-  const fd = new FormData(e.target)
-  const name = fd.get('name') || ''
-  const email = fd.get('email') || ''
-  const message = fd.get('message') || ''
-  const text = `Hola Jhaycor, soy ${name}. Mi correo es ${email}. ${message}`
-  const url = `https://wa.me/${WSP}?text=${encodeURIComponent(text)}`
-  window.open(url, '_blank')
-  e.target.reset()
-})
+// Initialize event listeners when DOM is ready
+function initEventListeners(){
+  // event listeners with null checks
+  const filterType = document.getElementById('filter-type')
+  const filterPrice = document.getElementById('filter-price') 
+  const filterBedrooms = document.getElementById('filter-bedrooms')
+  const searchInput = document.getElementById('search-input')
+  const sortSelect = document.getElementById('sort-select')
+  const contactForm = document.getElementById('contact-form')
+  
+  if(filterType) filterType.addEventListener('change', e=>{ state.type=e.target.value; state.page=1; applyAll() })
+  if(filterPrice) filterPrice.addEventListener('change', e=>{ state.maxPrice=e.target.value; state.page=1; applyAll() })
+  if(filterBedrooms) filterBedrooms.addEventListener('change', e=>{ state.bedrooms=e.target.value; state.page=1; applyAll() })
+  if(searchInput) searchInput.addEventListener('input', e=>{ state.query=e.target.value; state.page=1; applyAll() })
+  if(sortSelect) sortSelect.addEventListener('change', e=>{ state.sort=e.target.value; state.page=1; applyAll() })
+  
+  if(contactForm) {
+    contactForm.addEventListener('submit', e=>{
+      e.preventDefault()
+      // build a WhatsApp message from the form and open chat
+      const fd = new FormData(e.target)
+      const name = fd.get('name') || ''
+      const email = fd.get('email') || ''
+      const message = fd.get('message') || ''
+      const text = `Hola Jhaycor, soy ${name}. Mi correo es ${email}. ${message}`
+      const url = `https://wa.me/${WSP}?text=${encodeURIComponent(text)}`
+      window.open(url, '_blank')
+      e.target.reset()
+    })
+  }
+}
 
 document.getElementById('year').textContent = new Date().getFullYear()
 
@@ -279,6 +286,7 @@ function initMenuToggle(){
 
 // Initialize animations and menu when page loads
 document.addEventListener('DOMContentLoaded', ()=>{
+  initEventListeners()
   initAnimations()
   initMenuToggle()
 })
